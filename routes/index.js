@@ -1,4 +1,3 @@
-require("dotenv").config();
 var router = require('express').Router();
 
 router.use('/api', require('./api'));
