@@ -1,6 +1,6 @@
 var router = require('express').Router();
 var mongoose = require('mongoose');
-var Article = mongoose.model('Article');
+var Article = require('../../models/Article');
 
 // return a list of tags
 router.get('/', function(req, res, next) {
