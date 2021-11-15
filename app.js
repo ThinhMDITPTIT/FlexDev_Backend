@@ -1,7 +1,5 @@
 require('dotenv').config();
 
-const connectionString = 'mongodb+srv://ThinhMe:Moy3qYRYs2WmYio3@cluster0.wc8ww.mongodb.net/flexdevblog?retryWrites=true&w=majority'
-
 var http = require('http'),
     path = require('path'),
     methods = require('methods'),
@@ -35,7 +33,7 @@ if (!isProduction) {
 }
 
 if(isProduction){
-  mongoose.connect(connectionString);
+  mongoose.connect(process.env.MONGODB_URI);
 } else {
   mongoose.connect('mongodb://localhost/conduit');
   mongoose.set('debug', true);

@@ -6,7 +6,7 @@ var User = mongoose.model('User');
 var auth = require('../auth');
 
 // Preload article objects on routes with ':article'
-router.param('article', function(req, res, next, slug) {
+router.param('article', async function(req, res, next, slug) {
   Article.findOne({ slug: slug})
     .populate('author')
     .then(function (article) {
@@ -18,7 +18,7 @@ router.param('article', function(req, res, next, slug) {
     }).catch(next);
 });
 
-router.param('comment', function(req, res, next, id) {
+router.param('comment', async function(req, res, next, id) {
   Comment.findById({_id: id}).then(function(comment){
     if(!comment) { return res.sendStatus(404); }
 
@@ -28,7 +28,7 @@ router.param('comment', function(req, res, next, id) {
   }).catch(next);
 });
 
-router.get('/', auth.optional, function(req, res, next) {
+router.get('/', auth.optional, async function(req, res, next) {
   var query = {};
   var limit = 20;
   var offset = 0;

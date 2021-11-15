@@ -14,7 +14,7 @@ var ArticleSchema = new mongoose.Schema({
   author: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }
 }, {timestamps: true});
 
-ArticleSchema.plugin(uniqueValidator, {message: 'is already taken'});
+// ArticleSchema.plugin(uniqueValidator, {message: 'is already taken'});
 
 ArticleSchema.pre('validate', function(next){
   if(!this.slug)  {
