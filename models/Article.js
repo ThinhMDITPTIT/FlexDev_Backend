@@ -53,4 +53,4 @@ ArticleSchema.methods.toJSONFor = function(user){
   };
 };
 
-module.exports = mongoose.model('Article', ArticleSchema);
+mongoose.model('Article', ArticleSchema);
